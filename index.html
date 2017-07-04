@@ -40,7 +40,7 @@
 
   <script>
     function exec() {
-      var list = $('#name-list').val().split('\n');
+      var list = $('#name-list').val().replace(/\n+$/, '').replace(/&/g, '&amp;').replace(/>/g, '&gt;').replace(/</g, '&lt;').replace(/\"/g, '&quot;').split(/\n+/);
       var seed = $('#seed').val();
       Math.seedrandom(sha3_512(seed));
       list = shuffle(list);
