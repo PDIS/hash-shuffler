@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <script src="jquery-3.2.1.min.js"></script>
   <script src="seedrandom.js"></script>
+  <script src="sha3.min.js"></script>
   <title>抽籤網頁</title>
   <link rel="stylesheet" href="global.css">
 </head>
@@ -41,7 +42,7 @@
     function exec() {
       var list = $('#name-list').val().split('\n');
       var seed = $('#seed').val();
-      Math.seedrandom(seed);
+      Math.seedrandom(sha3_512(seed));
       list = shuffle(list);
       var res = list.join('</li><li>');
       res = '<ol><li>' + res + '</li></ol>';
