@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <script src="jquery-3.2.1.min.js"></script>
+    <script src="seedrandom.js"></script>
+    <title>抽籤網頁</title>
+</head>
+<body>
+亂數種子：<input id="seed" size="50">
+<table>
+    <tr>
+        <td>
+            候選名單<br>請每一行輸入一位人名
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <textarea id="name-list" rows="30"></textarea>
+        </td>
+        <td style="vertical-align: top;">
+            <div id="result">
+                結果將顯示於這裡
+            </div>
+        </td>
+    </tr>
+</table>
+<button onclick="exec();">進行抽籤</button>
+<script>
+    function exec() {
+        var list = $('#name-list').val().split('\n');
+        var seed = $('#seed').val();
+        Math.seedrandom(seed);
+        list = shuffle(list);
+        var res = list.join('</li><li>');
+        res = '<ol><li>' + res + '</li></ol>';
+        $('#result').html(res);
+    }
+
+    function shuffle(array) {
+        var currentIndex = array.length, temporaryValue, randomIndex;
+
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+
+        return array;
+    }
+</script>
+</body>
+</html>
