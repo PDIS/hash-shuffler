@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Microsoft JhengHei','Heiti TC', sans-serif;
     background-color: #DDD;
@@ -35,15 +39,23 @@ body {
     margin: 0 0 .5em 0;
 }
 
-.output textarea {
-    text-align: center;
-    background-color: #ffe;
-}
-
-textarea {
+.input textarea {
+    margin: 0 auto;
     width: 80%;
+    height: 50vh;
     border-width: 0;
     border-radius: .2em;
+    padding: 1em;
+}
+
+.output .area {
+    background-color: #ffe;
+    margin: 0 auto;
+    width: 80%;
+    height: 50vh;
+    border-width: 0;
+    border-radius: .2em;
+    text-align: left;
 }
 
 .shuffle button {
