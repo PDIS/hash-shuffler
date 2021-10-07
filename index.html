@@ -22,7 +22,7 @@
     </h2>
     <div class="input">
       <div class="meta">
-        請每一行輸入一位人名
+        請輸入候選者（以換行分開）
       </div>
       <textarea id="name-list" rows="30"></textarea>
     </div>
@@ -38,6 +38,16 @@
     <button onclick="exec();">進行抽籤</button>
   </div>
 
+  <!--
+2021: 在加碼券的情況只需要
+輸入亂數種子
+輸入抽籤序號
+取得全部序號數（有 API，單周內是常數）
+取得有勾該券種（或尚可中籤者）人數（也有 API）
+則可以知道是否落在中獎區位內
+
+區位邊緣可能按統計分佈時，無法直接顯示「有中籤」「沒中籤」，或許就用簡單的視覺化落在區位何處，而不是直接說有沒有中
+  -->
   <script>
     function exec() {
       var list = $('#name-list').val().replace(/\n+$/, '').replace(/&/g, '&amp;').replace(/>/g, '&gt;').replace(/</g, '&lt;').replace(/\"/g, '&quot;').split(/\n+/).sort();
